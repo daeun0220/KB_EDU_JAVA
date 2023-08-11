@@ -1,0 +1,20 @@
+<!-- 
+폼에 입력된 값에 따라서 서로 다른 이벤트가 진행  
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+
+</script>
+</head>
+<body>
+<form action="#" name="ageForm">
+	나이<input type="text" name="age">
+	<button onclick="checkAge()">나이확인</button>
+</form>
+</body>
+</html>

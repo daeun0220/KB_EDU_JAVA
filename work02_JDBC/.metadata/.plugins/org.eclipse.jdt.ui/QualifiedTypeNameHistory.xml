@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.sun.net.httpserver.Authenticator.Success"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="com.jdbc.dao.CustomDAO"/>
+    <fullyQualifiedTypeName name="com.jdbc.dao.impl.CustomDAOImpl"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="com.jdbc.vo.Custom"/>
+    <fullyQualifiedTypeName name="com.jdbc.dao.MemberDAO"/>
+    <fullyQualifiedTypeName name="com.jdbc.dao.impl.MemberDAOImpl"/>
+    <fullyQualifiedTypeName name="com.jdbc.exception.DuplicateIDException"/>
+    <fullyQualifiedTypeName name="com.jdbc.exception.RecordNotFoundException"/>
+    <fullyQualifiedTypeName name="com.jdbc.vo.Member"/>
+    <fullyQualifiedTypeName name="config.ServerInfo"/>
+    <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="broker.twotier.dao.Database"/>
+    <fullyQualifiedTypeName name="broker.twotier.vo.CustomerRec"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.jdbc.vo.Review"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.jdbc.vo.Movie"/>
+    <fullyQualifiedTypeName name="com.jdbc.vo.User"/>
+    <fullyQualifiedTypeName name="com.jdbc.dao.ManagerDAO"/>
+    <fullyQualifiedTypeName name="com.jdbc.dao.GeneralUserDAO"/>
+    <fullyQualifiedTypeName name="com.jdbc.dao.UserDAO"/>
+</qualifiedTypeNameHistroy>

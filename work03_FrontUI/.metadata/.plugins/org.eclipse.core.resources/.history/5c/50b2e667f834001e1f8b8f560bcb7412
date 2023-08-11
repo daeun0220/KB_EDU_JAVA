@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		width:960px;
+		margin:0 auto;
+		border: 2px dotted black;
+		padding: 30px;
+	}
+	#header1, #header{
+		text-align: center;
+	}
+
+
+
+</style>
+</head>
+<body>
+<div id="header">
+	<h1>밀수</h1>
+</div>
+<div id="header1">
+	<h1>==== KB * 영화예매 ====</h1>
+	<br>
+	<img alt="밀수이미지"   src="./image/goho.jpg">
+</div>
+<div id="section1">
+	상영관 : <select name="cinema">
+			<option value="CGV" selected="selected">CGV</option>
+			<option value="MEGABOX">MEGABOX</option>
+	</select>
+	날짜 선택 : <input type="date" name="date">
+	<br>
+	<div>
+	시간 선택 : <input type="radio" name="gender" value="Time">08:30 
+	<input type="radio" name="gender" value="Time">11:00 
+	<input type="radio" name="gender" value="Time">14:20 
+	<input type="radio" name="gender" value="Time">17:25 
+	<input type="radio" name="gender" value="Time">20:10 
+	<input type="radio" name="gender" value="Time">23:05 
+	</div>
+	<p> 요금 9,000 5,000 </p>
+	
+	인원 <input type="text" name="people" value="0"> <br>
+	금액 <input type="text" name="cost" value="0"> <br><br>
+	<label><input type="checkbox" name="option"> 옵션</label><br>
+	<div>
+	<label><input type="checkbox" name="food"> 팝콘</label>
+	<label><input type="checkbox" name="food"> 콜라</label>
+	</div>
+	
+</div>
+
+
+
+
+
+
+</body>
+</html>

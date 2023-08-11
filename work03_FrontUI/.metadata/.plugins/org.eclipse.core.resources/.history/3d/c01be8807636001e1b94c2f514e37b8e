@@ -1,0 +1,27 @@
+<!-- 
+자바스크립트에서 변수 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+var myName = "Peter";   //전역변수(로컬변수)
+name = "James";  //자동으로 전역변수가 됨
+
+console.log(myName);
+console.log(name);
+
+function showInfo(){ 
+		age = 33;   // 로컬변수
+		console.log(age);
+	}
+	
+	console.log(age);
+</script>
+</head>
+<body>
+
+</body>
+</html>

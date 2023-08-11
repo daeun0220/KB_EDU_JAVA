@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SharesRec.java&apos; to &apos;jdbc04_Broker/src/broker.twotier.vo&apos;&#x0D;&#x0A;- Original project: &apos;jdbc04_Broker&apos;&#x0D;&#x0A;- Destination element: &apos;jdbc04_Broker/src/broker.twotier.vo&apos;&#x0D;&#x0A;- Original element: &apos;broker.twotier.vo.SharesRec.java&apos;" description="Copy compilation unit" destination="/src&lt;broker.twotier.vo" element1="/src&lt;broker.twotier.vo{SharesRec.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1690954840618" units="1" version="1.0"/>
+</session>

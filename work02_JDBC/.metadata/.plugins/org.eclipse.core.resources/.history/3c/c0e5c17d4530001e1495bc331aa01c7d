@@ -1,0 +1,32 @@
+package com.jdbc.test;
+
+
+import com.jdbc.dao.impl.MemberDAOImpl;
+import com.jdbc.vo.Member;
+
+import config.ServerInfo;
+
+public class MemberDAOImplTest {
+	
+	public static void main(String[] args) throws Exception{
+		MemberDAOImpl dao = MemberDAOImpl.getInstance();
+		dao.insertMember(new Member(3,"김다은은","kde@naver.com", "1234"));
+		//dao.insertMember(new Member(2,"이주원","ejw@naver.com", "5678"));
+		//dao.deleteMember(1);
+		//dao.updateMember(new Member(2,"이주원","ejw@naver.com", "0000"));
+		//System.out.println(dao.getMember());
+		//System.out.println(dao.getMember(2));
+		//System.out.println(dao.getMember("이주원"));
+	}
+	
+	static { // static 이 main보다 먼저 실행됨 
+		try {  
+			Class.forName(ServerInfo.DRIVER_NAME);
+			System.out.println("Driver Loading Success...");
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("Driver Loading Fail...");
+		} 
+	}
+
+}

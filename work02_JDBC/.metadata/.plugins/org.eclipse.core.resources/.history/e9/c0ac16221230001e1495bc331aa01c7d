@@ -1,0 +1,51 @@
+package com.jdbc.test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import config.ServerInfo;
+
+public class JDBCTest1 {
+	
+	public JDBCTest1() throws SQLException{
+		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
+		System.out.println("Database Connection...");
+		
+		//DELETE 
+//		String query = "delete custom where id=?";
+//		PreparedStatement ps = conn.prepareStatement(query);
+//		System.out.println("PreparedStatement Creation");
+//		
+//		ps.setInt(1, 40);
+//		int row = ps.executeUpdate();  // 이때 실질적으로 db에서 데이터 삭제가 발생... 자동 commit
+//		System.out.println(row + "ROW DELETE OK~~");
+		
+		//UPDATE :: 아이디 10 고객의 이름을 James1, 주소를 NY로 수정
+		String query = "update custom set name='James1', address='NY' where id=?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		System.out.println("PreparedStatement Creation");
+		
+		ps.setInt(1, 10);
+		int row = ps.executeUpdate();  // 이때 실질적으로 db에서 데이터 삭제가 발생... 자동 commit
+		System.out.println(row + "ROW UPDATE OK~~");
+		
+	}
+
+	public static void main(String[] args) throws SQLException{
+		new JDBCTest1();
+
+	}
+	
+	static {
+		try {
+			Class.forName(ServerInfo.DRIVER_NAME);
+			System.out.println("Driver Loading Success...");
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("Driver Loading Fail...");
+		}
+	}
+
+}

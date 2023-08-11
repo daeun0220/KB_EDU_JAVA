@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{
+		background-color:#dddddd;
+	}
+	span{
+		background-color:orange;
+	}
+
+</style>
+</head>
+<body>
+<h2> 영역을 구분하는 태그 :: div  | span </h2>
+<div>
+	div scope1
+</div>
+	div scope2
+<hr>
+<span>
+	span scope1
+</span>
+	span scope2
+</body>
+</html>

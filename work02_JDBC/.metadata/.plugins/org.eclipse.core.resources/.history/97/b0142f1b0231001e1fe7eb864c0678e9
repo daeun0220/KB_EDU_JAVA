@@ -1,0 +1,194 @@
+package broker.twotier.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.jdbc.vo.Member;
+
+import broker.twotier.exception.DuplicateSSNException;
+import broker.twotier.exception.InvalidTransactionException;
+import broker.twotier.exception.RecordNotFoundException;
+import broker.twotier.vo.CustomerRec;
+import broker.twotier.vo.SharesRec;
+import broker.twotier.vo.StockRec;
+import config.ServerInfo;
+
+public class Database implements DatabaseTemplate{
+	//싱글톤 잠시 생략
+	
+	public Database(String serverIp) throws ClassNotFoundException{
+		Class.forName(ServerInfo.DRIVER_NAME);
+		System.out.println("드라이버 로딩 성공..");
+	}
+	
+	///////////////////// 공통적인 로직 ////////////////////
+	@Override
+	public Connection getConnect() throws SQLException {
+		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
+		System.out.println("DB Connect...");
+		return conn;
+	}
+
+	@Override
+	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
+		if(ps!=null) ps.close();
+		if(conn!=null)conn.close();
+		
+	}
+
+	@Override
+	public void closeAll(ResultSet rs, PreparedStatement ps, Connection conn) throws SQLException {
+		if(rs!=null) rs.close();
+		closeAll(ps, conn);
+		
+	}
+	
+	// snn 여부 확인
+	private boolean isExist(String ssn, Connection conn) throws SQLException {
+		String query = "SELECT ssn FROM customer WHERE ssn=?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setString(1, ssn);
+		ResultSet rs = ps.executeQuery();
+		return rs.next();
+	}
+	
+	
+	@Override
+	public void addCustomer(CustomerRec cust) throws SQLException, DuplicateSSNException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getConnect();
+            if(!isExist(cust.getSsn(), conn)) {//추가하려는  ssn고객이 없다면
+                String query = "INSERT INTO customer(ssn, cust_name, address) VALUES(?,?,?)";
+                ps=  conn.prepareStatement(query);
+                ps.setString(1, cust.getSsn());
+                ps.setString(2, cust.getName());
+                ps.setString(3, cust.getAddress());
+                System.out.println(ps.executeUpdate()+" 명 INSERT 성공...addCustomer()..");
+            }else {
+                throw new DuplicateSSNException("해당하는 고객은 이미 회원이십니다");
+            }
+        }finally {
+            closeAll(ps, conn);
+        }
+    }
+
+	@Override
+	public void deleteCustomer(String ssn) throws SQLException, RecordNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getConnect();
+            if(isExist(ssn, conn)) {
+                String query = "DELETE customer WHERE ssn=?";
+                ps = conn.prepareStatement(query);
+                ps.setString(1, ssn);
+
+                System.out.println(ps.executeUpdate()+" 명 DELETE OK...deleteCustomer()..");
+            }else {
+                throw new RecordNotFoundException("삭제할 대상의 고객이 없습니다 ");
+            }
+        }finally {
+            closeAll(ps, conn);
+        }
+    }
+
+	@Override
+	public void updateCustomer(CustomerRec cust) throws SQLException, RecordNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getConnect();
+            String query = "UPDATE customer SET cust_name=?, address=? WHERE ssn=?";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, cust.getName());
+            ps.setString(2, cust.getAddress());
+            ps.setString(3, cust.getSsn());
+
+            int row = ps.executeUpdate();
+            if(row==1)System.out.println(row+" 명 UPDATE OK...updateCustomer()...");
+            else throw new RecordNotFoundException("수정할 대상의 고객이 없습니다");
+        }finally {
+            closeAll(ps, conn);
+        }
+
+    }
+	// 특정한 고객이 보유하고 있는 주식정보를 받아오는 기능\
+	// shares 테이블로부터 select 해오겠다
+	@Override
+	public ArrayList<SharesRec> getPortfolio(String ssn) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		ArrayList<SharesRec> list = new ArrayList<>();
+		try {
+			conn = getConnect();
+			String query = "SELECT ssn, symbol, quantity FROM shares WHERE ssn=?";
+			ps = conn.prepareStatement(query);
+			ps.setString(1, ssn);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {   
+				list.add(new SharesRec(ssn, rs.getString("symbol"), rs.getInt("quantity")));
+			}
+		} finally {
+			closeAll(rs, ps, conn);
+		}
+		return list;
+	}
+
+	@Override
+	public CustomerRec getCustomer(String ssn) throws SQLException {
+		//CustomerRec customerRec = getPortfolio(ssn)
+		return null;
+	}
+
+	@Override
+	public ArrayList<CustomerRec> getAllCustomers() throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		ArrayList<CustomerRec> list = new ArrayList<>();
+		try {
+			conn = getConnect();
+			String query = "SELECT ssn, name, address FROM customer";
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {   
+				list.add(new CustomerRec(rs.getInt("ssn"), rs.getString("name"), rs.getString("address")));
+			}
+		} finally {
+			closeAll(rs, ps, conn);
+		}
+		return list;
+		return null;
+	}
+
+	@Override
+	public ArrayList<StockRec> getAllStocks() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void buyShares(String ssn, String symbol, int quantity) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sellShares(String ssn, String symbol, int quantity)
+			throws SQLException, InvalidTransactionException, RecordNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

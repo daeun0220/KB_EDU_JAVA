@@ -1,0 +1,80 @@
+package com.jdbc.dao.impl;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.jdbc.dao.MemberDAO;
+import com.jdbc.vo.Member;
+
+import config.ServerInfo;
+
+public class MemberDAOImpl implements MemberDAO{
+	//싱글톤
+	private static MemberDAOImpl dao = new MemberDAOImpl();
+	private MemberDAOImpl() {
+		System.out.println("CustomDAOImpl Creating...");
+	}
+	public static MemberDAOImpl getInstance() {
+		return dao;
+	}
+	
+	
+	
+	//////////////공통적인 로직 //////////////// 이거 왜 public....?
+	public Connection getConnect() throws SQLException {
+		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
+		System.out.println("DB Connect...");
+		return conn;
+	}
+	public void closeAll(Connection conn, PreparedStatement ps) throws SQLException {
+		if(ps!=null) ps.close();
+		if(conn!=null)conn.close();
+	}
+	public void closeAll(Connection conn, PreparedStatement ps, ResultSet rs) throws SQLException {
+		if(rs!=null) rs.close();
+		closeAll(conn, ps);
+	}
+	
+	
+	@Override
+	public void insertMember(Member member) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteMember(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateMember(Member member) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Member getMember(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Member> getMember() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Member> getMember(String name) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

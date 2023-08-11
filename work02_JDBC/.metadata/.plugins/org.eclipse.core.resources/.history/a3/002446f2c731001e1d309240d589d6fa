@@ -1,0 +1,12 @@
+package com.jdbc.dao;
+
+import com.jdbc.vo.Review;
+
+public interface ReviewDAO {
+	void addReview(String userId, Review review)throws SQLException;
+
+	void deleteReview(String userId, Review review)throws SQLException; // 내가 작성한 글만 삭제 가능 - 리뷰 작성자와 nickname 이 같을때만
+
+	void updateReview(String userId, Review review)throws SQLException;
+
+}

@@ -1,0 +1,61 @@
+package com.jdbc.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import config.ServerInfo;
+
+/*
+ * Business Logic을 가지고 있는 DAO 클래스
+ * 하나의 기능이 완벽한 서비스 단위이다
+ */
+public class CustomDAO {
+	
+	public CustomDAO() {
+		System.out.println("CustomDAO...Creating...");
+	}
+    
+	////////// Business Logic //////////// 하나의 메서드가 하나의 기능 
+	public void addCustom(int id, String name, String addr) throws SQLException{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try {
+			conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
+			System.out.println("DB Connect...");
+			
+			String query = "INSERT INTO custom (id, name, address) VALUES(?,?,?)";
+			ps = conn.prepareStatement(query);
+			
+			ps.setInt(1, id);
+			ps.setString(2, name);
+			ps.setString(3, addr);
+			
+			System.out.println(ps.executeUpdate() + "명 등록 성공");
+			
+		} finally {
+			ps.close();
+			conn.close();
+		}
+		
+		
+	}
+	
+	public void deleteCustom(int id) {
+		
+	}
+
+	public void updateCustom(int id, String name, String addr) {
+	
+	}
+	
+	public void printAllCustom() {
+		
+	}
+	
+	public void printACustom(int id) {
+		
+	}
+}

@@ -1,0 +1,30 @@
+<!-- 
+javascript 에서 onload 함수가 필요한 이유
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//복합연산자 사용 
+let list = '';
+list += '<ul>';
+list += '<li>Hello</li>';
+list += '<li>JavaScript~~!</li>';   //document안에 있는 div 요소 찾아 내용을 뿌린다
+
+onload = function() {
+//2. document 안에 있는 특정한 요소에 출력이 되도록 
+document.getElementById("wrap").innerHTML = list;   //Dom트리 요소 로딩 순서 고려.... ---> 아래에 쓰거나 onload 함수 쓰거나 
+
+}
+</script>
+</head>
+<body>
+<h2 align=center>================onload====================</h2>
+<div id="wrap">     
+
+</div>
+</body>
+</html>

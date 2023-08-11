@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;workshop02/src/main/webapp/css03_flexbox_exam2_template1.html&apos; to &apos;front_workshop02.html&apos;" description="Rename resource &apos;css03_flexbox_exam2_template1.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/css03_flexbox_exam2_template1.html" name="front_workshop02.html" stamp="1691475553746" updateReferences="true"/>
+</session>

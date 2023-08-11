@@ -1,0 +1,24 @@
+<!-- 
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBjIqomV_U0yzzlg3NlB5qtbYCJQRj3AulUA&usqp=CAU
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkhVXo0PStCaz-E5mudcAtsDhV53vPXqpUFQ&usqp=CAU
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+</script>
+</head>
+<body>
+<h2>What Can JavaScript Do?</h2>
+<p>JavaScript can change HTML attribute values.</p>
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+<button>Turn on the light</button>
+
+<button>Turn off the light</button>
+</body>
+</html>

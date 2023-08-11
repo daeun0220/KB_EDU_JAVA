@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Insert title here</title>
+<style>
+	.accent{
+		color:crimson;
+		font-size:18px;
+	}
+	.larger{
+		font-size:24px;
+		font-style:italic;
+	}
+	#box{
+	width: 200px;
+		border: 1px solid crimson;
+	}
+</style>
+</head>
+<body>
+<!-- 
+block tag (자동 줄바꿈)
+inline tag
+ -->
+<h2>State Attribute</h2>
+<form action="#">
+	<h3 id="box">Enabled</h3>
+	<input type="text" disabled="disabled" value="kblife">
+	
+	
+	<h3>Disabled</h3>
+	
+	
+	<h3>Readonly</h3>
+	
+	
+	<h3>Required</h3>
+	
+</form>
+<hr>
+<h1 class="accent">This heading will not be affected</h1>
+<p class="accent">This paragraph will be red and center-aligned.</p>
+<p class="accent larger" >This paragraph will be red, center-aligned, and in a large font-size.</p> 
+</body>
+</html>

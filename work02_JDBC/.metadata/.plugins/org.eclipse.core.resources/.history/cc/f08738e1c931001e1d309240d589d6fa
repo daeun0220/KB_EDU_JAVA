@@ -1,0 +1,20 @@
+package com.jdbc.dao;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.jdbc.vo.Review;
+import com.jdbc.vo.User;
+
+public interface GeneralUserDAO extends UserDAO {
+	void addReview(String userId, Review review) throws SQLException;
+
+	void deleteReview(String userId, Review review) throws SQLException;
+
+	void updateReview(String userId, Review review) throws SQLException;
+
+	ArrayList<Review> getAllReviews() throws SQLException; // 모든 리뷰보기
+
+	ArrayList<Review> getAllReviewsByRate(int rate) throws SQLException;
+
+}

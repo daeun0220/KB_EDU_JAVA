@@ -1,0 +1,10 @@
+footer {
+  /* 직접 작성합니다. */
+}
+
+footer ul{
+  list-style-type: none;
+}
+footer ul li{
+  /* 직접 작성합니다. */
+}

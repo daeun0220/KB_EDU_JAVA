@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function push() {
+	//demo 영역을 찾아서 변수 demo에 할당 
+	//Hello getElementById 라는 메세지 출력
+	let demo = document.getElementById("demo");
+	demo.innerHTML = "<h2 style='color:tomato'>Hello getElementById</h2>";
+}
+
+</script>
+</head>
+<body>
+<h1>What Can JavaScript Do?</h1>
+
+
+<p id="demo">JavaScript can change HTML content.</p>
+
+<!-- 버튼 클릭할 때 push 함수 호출 -->
+<button type="button" onclick="push()">Click Me!</button>
+</body>
+</html>

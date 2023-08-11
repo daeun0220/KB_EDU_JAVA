@@ -1,0 +1,70 @@
+package com.jdbc.dao.impl;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.jdbc.dao.CustomDAO;
+import com.jdbc.vo.Custom;
+
+import config.ServerInfo;
+
+public class CustomDAOImpl implements CustomDAO{
+	
+	private static CustomDAOImpl dao = new CustomDAOImpl();
+	private CustomDAOImpl() {
+		System.out.println("CustomDAOImpl Creating...");
+	}
+	
+	
+	////////////// 공통적인 로직 ////////////////
+	private Connection getConnect() throws SQLException {
+		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
+		System.out.println("DB Connect...");
+
+		return conn;
+	}
+	private void closeAll(Connection conn, PreparedStatement ps) throws SQLException {
+		if(ps!=null) ps.close();
+		if(conn!=null)conn.close();
+	}
+	private void closeAll(Connection conn, PreparedStatement ps, ResultSet rs) throws SQLException {
+		if(rs!=null) rs.close();
+		closeAll(conn, ps);
+	}
+	
+	
+	@Override
+	public void addCustom(Custom cust) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteCustom(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateCustom(Custom cust) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Custom getCustomer(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Custom> getAllCustomer() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

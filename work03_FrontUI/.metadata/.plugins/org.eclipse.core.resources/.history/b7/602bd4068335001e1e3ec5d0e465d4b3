@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여백지정하기</title> <!-- 타이틀은 주는게 좋다 / 메타태그는 검색할때 도움되는거-->
+<style>
+*{
+	margin:0;
+}
+h2, h4{
+	border: 1px solid green;
+}
+
+</style>
+</head>
+<body>
+	<h2>여백지정하기</h2>
+	<h4>margin, padding</h4>   
+</body>
+</html>
