@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+	$('#JQueryAjax').click(function(){ 
+		$.ajax({ 
+			//요청
+			type:"get",
+			url:"./bank.json", //프로그램이 수행되었다고 치고 데이터를 받았다
+			
+			//응답
+			success:function(resultdata){ 
+				alert(resultdata.data);   // .key 하면 value값 뽑아짐
+			},
+			error:function(){ 
+				alert("응답시간 지연~~~Error Code~~!");
+			},
+			timeout:1000
+			
+		}); // ajax
+	}); //click
+
+});//ready
+</script>
+</head>
+<body>
+<input type="button" value="JQueryAjax" id="JQueryAjax">
+</body>
+</html>

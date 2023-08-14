@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+ <script>
+ $(function() {
+	$('#send').click(function(){
+		$.ajax({	
+			//
+			type:"get",
+			url:"http://localhost:8888/weather.xml",
+			dataType:'xml',
+			
+			//
+			success:function(result){
+				var str="";
+				$(result).find('list').each(function(index, item){
+					var region=$(this).find('region').text();
+					var wind=$(this).find('wind').text();
+					var rain=$(this).find('rain').text();
+					var temp=$(this).find('temp').text();
+					
+					//변수안의 들어있는 값을 str 복합 연산자를 이용해서 붙여 나간다.
+					str +="<tr>";
+					str +="<td>"+region+"</td>";
+					str +="<td>"+wind+"</td>";
+					str +="<td>"+rain+"</td>";
+					str +="<td>"+temp+"</td>";
+					str +="</tr>";
+				});//each
+				
+				//str을 tbody부분에 부착...태그에 내용을 부착...append
+				$('tbody tr*').remove();
+				$('tbody').append(str);
+				
+			}
+		});
+	});
+ }); 
+</script>
+</head>
+<body>
+<div class="jumbotron text-center">
+	<h2>======= OPEN API Weather 데이타 가져오기 ===========</h2>
+	<p><a href="#" id="send">XML 데이타 서버로 요청하기</a></p>
+</div>
+<div class="container pt-3">
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>REGION</th>
+			<th>WIND</th>
+			<th>RAIN</th>
+			<th>TEMP</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- 이 부분에 공공데이타 XML 내용이 출력됨-->
+	</tbody>
+</table>
+</div>
+</body>
+</html>

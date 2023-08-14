@@ -3,6 +3,10 @@ C:\KB_EDU\study_java\work03_FrontUI\.metadata\.plugins\org.eclipse.jst.jsp.core\
 \workshop04\src\main\java
 C:\KB_EDU\study_java\work03_FrontUI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\586118670.index
 \front04_JS\src\main\java
+C:\KB_EDU\study_java\work03_FrontUI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2181845955.index
+\front07_JQueryUI\src\main\java
+C:\KB_EDU\study_java\work03_FrontUI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4123802786.index
+\front07_JQueryUI\src\main\java
 C:\KB_EDU\study_java\work03_FrontUI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\713848345.index
 \front05_JQuery\src\main\java
 C:\KB_EDU\study_java\work03_FrontUI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2882775669.index

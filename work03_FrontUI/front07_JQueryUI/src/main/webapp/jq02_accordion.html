@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/sunny/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion({
+    	heightStyle:'content'
+    });
+    
+    //1. h3부분을 클릭하면ㄴ 함수
+    $('#accordion h3').click(function(){
+    	// 클릭이벤트가 적용되ㅡㄴ 택멁
+    	var txt = $(this).text();
+    	
+    	if(txt=="국민은행 과정 리스트"){   
+    		$.ajax({
+    			type:'get',
+    			url:'SubjectAjax',
+    			
+    			success:function(result){ 
+    				$('#subject').html(result);
+    			}
+    		});
+    	
+    	}else if(txt=="국민은행 전국 산하 지점"){   
+    		$.ajax({
+    			type:'get',
+    			url:'BranchesAjax',
+    			
+    			success:function(result){ 
+    				$('#branches').html(result);
+    			}
+    		});
+    	}
+  
+    });
+    
+    
+    $('#createSection').click(function(){
+    	var footer = "<h3>오시는길</h3><div>서울 강남구 선릉로 위워크 빌딩 302호 888-888</div>";
+    	
+    	$(this).remove();
+    	//맨 마지막 어코디언의 section으로 윈 내용 추가 ...append
+    	
+    	$('#accordion').append(footer).accordion('destroy').accordion({     //처음꺼 지우고 accordion으로 추가 
+        	heightStyle:'content'
+        });
+    });
+    
+    
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="accordion">
+  <h3>INTRO</h3>
+  <div>
+    <p>
+   국민은행 아카데미를 찾아주셔서 감사합니다.  <br>
+   교육생 여러분들은 이후 남아있는 2개월간의 과정을 수료하시면 
+   금융 플랫폼 연수과정으로 입과하실 수 있습니다. <br>
+    </p>
+  </div>
+  <h3>국민은행 과정 리스트</h3>
+  <div id="subject">
+    
+  </div>
+  <h3>국민은행 전국 산하 지점</h3>
+  <div id="branches">
+  </div>
+</div>
+ 
+ <hr>
+ <p>
+ <input type="button" value="Create Section" id="createSection">
+ 
+</body>
+</html>

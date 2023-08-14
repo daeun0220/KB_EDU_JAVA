@@ -1,0 +1,42 @@
+<!-- 
+로컬스토리지에 데이터 저장/삭제/가져오는 방법
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+		$('#saveBtn').click(function(){
+			//localstorage에 데이터 저장
+			localstorage.setItem("key1","안녕"); //****
+			localstorage.key2 = "Hi";
+			localstorage[key3] = "HELLO";
+		});
+		
+		$('#delBtn').click(function(){
+			localstorage.removeItem("key1");
+		});
+		
+		$('#delAllBtn').click(function(){
+			localstorage.clear();
+		});
+
+		$('#showBtn').click(function(){
+			localstorage.getItem("key1")+"," 
+			+ localstorage.key2+","
+			+ localstorage.getItem[key3];
+		});
+
+	});//ready
+</script>
+</head>
+<body>
+	<button id="saveBtn">저장</button>
+	<button id="delBtn">삭제</button>
+	<button id="delAllBtn">전체삭제</button>
+	<button id="showBtn">내용보기</button>
+</body>
+</html>
