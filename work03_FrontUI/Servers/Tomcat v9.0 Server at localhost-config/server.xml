@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="front03_CSS3" path="/front03_CSS3" reloadable="true" source="org.eclipse.jst.jee.server:front03_CSS3"/><Context docBase="workshop03" path="/workshop03" reloadable="true" source="org.eclipse.jst.jee.server:workshop03"/><Context docBase="front04_JS" path="/front04_JS" reloadable="true" source="org.eclipse.jst.jee.server:front04_JS"/><Context docBase="workshop04" path="/workshop04" reloadable="true" source="org.eclipse.jst.jee.server:workshop04"/><Context docBase="front05_JQuery" path="/front05_JQuery" reloadable="true" source="org.eclipse.jst.jee.server:front05_JQuery"/><Context docBase="workshop06" path="/workshop06" reloadable="true" source="org.eclipse.jst.jee.server:workshop06"/><Context docBase="front06_Bootstrap" path="/front06_Bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:front06_Bootstrap"/><Context docBase="front07_JQueryUI" path="/front07_JQueryUI" reloadable="true" source="org.eclipse.jst.jee.server:front07_JQueryUI"/></Host>
+      <Context docBase="front05_JQuery" path="/front05_JQuery" reloadable="true" source="org.eclipse.jst.jee.server:front05_JQuery"/><Context docBase="workshop07" path="/workshop07" reloadable="true" source="org.eclipse.jst.jee.server:workshop07"/></Host>
     </Engine>
   </Service>
 </Server>
