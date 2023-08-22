@@ -144,7 +144,7 @@ public class MemberDAOImpl implements MemberDAO{
         MemberVO vo = null;
         try {
             conn = getConnection();
-            String query = "SELECT id, password, name, address FROM member WHERE id=? and password=?";
+            String query = "SELECT id, password, name, address FROM member1 WHERE id=? and password=?";
             ps = conn.prepareStatement(query);
             ps.setString(1, id);
             ps.setString(2, password);
