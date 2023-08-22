@@ -1,4 +1,3 @@
-<%@page import="servlet.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>회원 검색 결과</h2>
-ID  : ${vo.id} <BR>
-NAME : ${vo.name} <BR>
-ADDRESS :  ${vo.address}
+<h3><b>${param.name}</b> 님, 회원 가입되셨습니다~!!</h3>
 </body>
 </html>

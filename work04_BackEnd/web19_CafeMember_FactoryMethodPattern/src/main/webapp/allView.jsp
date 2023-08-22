@@ -49,7 +49,7 @@
 	</tbody>
 </table>
 </div>
-<button type="button" class="btn btn-primary" onClick="location.href='http://localhost:8888/web17_JSTL_CafeMember_FrontController/index.jsp'">INDEX</button>
+<button type="button" class="btn btn-primary" onClick="location.href='http://localhost:8888/web19_CafeMember_FactoryMethodPattern/index.jsp'">INDEX</button>
 </body>
 </html>
 
