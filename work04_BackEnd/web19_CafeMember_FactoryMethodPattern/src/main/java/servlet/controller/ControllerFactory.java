@@ -33,6 +33,12 @@ public class ControllerFactory {
 		}else if(command.equals("login")) {
 			controller = new LoginController();
 			System.out.println("LoginController..Creating...ok");
+		}else if(command.equals("logout")) {
+			controller = new LogoutController();
+			System.out.println("LogoutController..Creating...ok");
+		}else if(command.equals("update")) {
+			controller = new UpdateController();
+			System.out.println("UpdateController..Creating...ok");
 		}
 		return controller;
 	}

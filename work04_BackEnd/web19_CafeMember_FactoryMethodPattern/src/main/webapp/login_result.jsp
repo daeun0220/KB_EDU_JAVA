@@ -14,7 +14,7 @@ ID : ${vo.id}<br>
 NAME : ${vo.name}<br>
 ADDRESS : ${vo.address}<br>
 <p></p><hr><p></p>
-<a href="logout.jsp">LOG OUT</a>
+<a href="front.do?command=logout">LOG OUT</a>
 <a href="index.jsp">INDEX</a>
 </body>
 </html>

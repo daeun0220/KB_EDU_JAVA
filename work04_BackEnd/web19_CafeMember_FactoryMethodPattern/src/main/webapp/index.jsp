@@ -31,6 +31,7 @@ a:hover {
 		<c:when test="${!empty vo}">			
 		    <p><a href="update.jsp">회원 정보 수정 하기</a></p>
 		    <p><a href="front.do?command=showAll">전체 회원 보기</a></p>
+		    <p><a href="front.do?command=logout">로그아웃 하기</a></p>
 		</c:when>			
 		<c:otherwise>
 			<p><a href="register.jsp">회원 가입 하기</a></p>     
