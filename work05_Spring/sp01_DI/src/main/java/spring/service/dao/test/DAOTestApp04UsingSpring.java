@@ -29,7 +29,7 @@ public class DAOTestApp04UsingSpring {
 		MemberDAO dao = (MemberDAO)factory.getBean("dao");
 		
 		//빈의 기능 호출
-		dao.register("kblife", "김국민", "선릉");
+		dao.register("kblife", "김국민");
 		dao.delete("haha0071");
 		
 }

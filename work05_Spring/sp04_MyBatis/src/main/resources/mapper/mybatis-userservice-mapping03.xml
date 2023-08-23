@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<!-- SQL definition -->
+<mapper namespace="UserMapper03">
+	<!-- 회원의 아이디가 "user"인 사람을 검색하는 쿼리 -->
+	<select id="getUser01" resultType="user" parameterType="string">
+		SELECT 
+		user_id AS userId, 
+		user_name AS userName, 
+		password, age, grade, 
+		reg_date AS regDate
+		FROM users
+		WHERE user_id LIKE #{VALUE}
+	</select>
+	
+	<insert id="addUser" parameterType="user">
+		INSERT 
+		INTO users(user_id, user_name, password, age, grade, reg_date)
+		VALUES( #{userId}, #{userName}, #{password}, #{age}, #{grade}, #{regDate} )
+	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		UPDATE users
+		SET user_name = #{userName}
+		WHERE user_id = #{userId}
+	</update>
+	
+	<delete id="removeUser" parameterType="string">
+		DELETE users
+		WHERE user_id = #{VALUE}
+	</delete>
+	
+</mapper>
