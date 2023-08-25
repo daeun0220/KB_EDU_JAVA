@@ -21,8 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.service.spring" />
-	
+	<!-- front.do로 요청이 들어오면 FrontController를 생성하도록 HandlerMapping에게 전달  -->
+	<beans:bean name="/front.do" class="com.service.spring.controller.FrontController"/>
 	
 	
 </beans:beans>
