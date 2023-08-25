@@ -38,6 +38,6 @@
     <!-- User Definition Bean -->
     <!-- Annotation 매핑함 -->
     
-    <context:component-scan base-package="mybatis.services.user.impl"></context:component-scan>
+    <context:component-scan base-package="mybatis.services.user."></context:component-scan>
 
 </beans>
