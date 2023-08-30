@@ -51,6 +51,37 @@ body, p {
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
+<!-- Ajax 연결!!  -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+$(function() {
+    $('.subject').mouseover(function() {
+        var isbn=$(this).attr('id');
+        $.ajax({
+            url:"bookDesc.do?isbn="+isbn,
+            type:"get",
+            dataType:"json",
+            error:function(xhr, status, message){
+                alert("error :"+message);
+            },
+            success:function(data){
+            	//alert(data);
+              $('#result').html("<h5><font color=red>"
+                        +data["book"].isbn+"<br>"
+                        +data["book"].title+"<br>"
+                        +data["book"].catalogue+"<br>"
+                        +data["book"].author+"<br>"
+                        +"</font></h5>");
+              
+            }
+        });//ajax
+    });//mouseover
+});//function
+
+</script>
+
+
+
 </head>
 <body>
 	<h1>도서 목록 화면</h1>

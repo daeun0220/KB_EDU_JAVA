@@ -8,6 +8,7 @@
 	<!-- 오라클에서는  null값을 허용하는 옵션을 지정 :: MySQL에서는 이부분이 기본적으로 내장되어 있다. -->
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>   <!-- 디비 컬럼명과 도메인 변수명이 다를때 써준다!!!  -->
 	</settings>
 	
 	<typeAliases>	

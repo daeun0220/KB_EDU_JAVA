@@ -5,7 +5,7 @@
 <mapper namespace="ns.sql.BookMapper">
 <sql id="select-book">
 	SELECT
-	isbn,title,catalogue,nation, publish_date ,
+	isbn,title,catalogue,nation, publish_date AS publishDate ,
 	publisher,author,price,currency, description
 	FROM 
 	book
@@ -13,7 +13,7 @@
 	<insert id="insertBook" parameterType="book">
 		INSERT
 		INTO book
-		(isbn,title,catalogue, nation, publish_date ,publisher,
+		(isbn,title,catalogue, nation, publish_date AS publishDate ,publisher,
 		author,price,currency, description)
 		VALUES (#{isbn}, #{title}, #{catalogue}, #{nation}, #{publishDate}, #{publisher}, #{author},
 		#{price}, #{currency}, #{description})
@@ -35,7 +35,7 @@
 	
 	<select id="searchByPrice" parameterType="string" resultType="book">
 		<include refid="select-book" />
-		WHERE price =#{VALUE}
+		<![CDATA[ WHERE price <= #{VALUE} ]]>
 	</select>
 	
 	<select id="searchByIsbn" parameterType="string" resultType="book">

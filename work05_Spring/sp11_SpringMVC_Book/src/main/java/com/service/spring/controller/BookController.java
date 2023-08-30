@@ -55,41 +55,66 @@ public class BookController {
     }
 	
 	@RequestMapping("bookSearch.do")
-    public ModelAndView search(String searchField ,String searchText, HttpServletRequest request) throws Exception{ 
-		System.out.println(searchField + ", " + searchText);
-		List<Book> list = null;
-		try {
-			switch(searchField) {
-			case "TITLE" :
-				//searchByTitle..
-				list = bookService.searchByTitle(searchText);
-				break;
-			case "PUBLISHER" :
-				//searchByPublisher..
-				list = bookService.searchByPublisher(searchText);
-				break;
-			case "PRICE" :
-				//searchByPrice..
-				list = bookService.searchByPrice(Integer.parseInt(searchText));
-				break;
-			default:
-				list = bookService.getBooks();
-			}
-		} catch(Exception e) {
-			
-		}
-		return new ModelAndView("book/bookList", "list", list);
+	public ModelAndView search(String searchField ,String searchText, HttpServletRequest request) throws Exception{ 
+	    System.out.println(searchField+","+searchText);
+	    
+	    List<Book> list = null;
+	    String path = "find_fail";
+	    
+	    try {
+	        switch(searchField) {
+	        case "TITLE":
+	            list = bookService.searchByTitle(searchText);
+	            break;
+	            
+	        case "PUBLISHER":
+	            list = bookService.searchByPublisher(searchText);
+	            break;
+	            
+	        case "PRICE":
+	            list = bookService.searchByPrice(Integer.parseInt(searchText));
+	            break;
+	            
+	        default:
+	            list = bookService.getBooks();
+	        }//switch
+	        
+	        path = "book/bookList";
+	        request.setAttribute("field", searchField);
+	        request.setAttribute("text", searchText);
+	        
+	    }catch(Exception e) {
+	        System.out.println(e);
+	        request.setAttribute("msg", "도서 검색중 오류 발생했습니다");
+	    }
+	    return new ModelAndView(path, "list", list);
 	}
 	
 	@RequestMapping("bookView.do")
     public ModelAndView bookview(String isbn, HttpServletRequest request)throws Exception{
-		Book book = bookService.searchByIsbn(isbn);
-		return new ModelAndView("book/bookView", "b", book);
-	}
+        String path = "find_fail.jsp";
+        Book book = null;
 
-//	@RequestMapping("bookDesc.do")
-//    public ModelAndView desc(HttpServletRequest request, String isbn) throws Exception {
-//		return null;
-//	}
+        try {
+            book = bookService.searchByIsbn(isbn);
+            path = "book/bookView";
+        }catch(Exception e) {
+            System.out.println(e);
+            request.setAttribute("msg", "isbn으로 검색중 오류 발생했습니다.");
+        }
+        return new ModelAndView(path, "b", book);
+    }
+
+	@RequestMapping("bookDesc.do")
+    public ModelAndView desc(String isbn, HttpServletRequest request) throws Exception {
+		Book book = null;
+		try {
+			book = bookService.searchByIsbn(isbn);
+			System.out.println(book);
+		}catch(Exception e) {
+			request.setAttribute("msg", "비동기 통신 오류발생");
+		}
+		return new ModelAndView("JsonView", "book", book);
+	}
 
 }
