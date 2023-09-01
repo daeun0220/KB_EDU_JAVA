@@ -18,7 +18,43 @@ form{
 	margin: 0 auto;
 }
 </style>
-
+<script>
+	/* 
+	key event 함수
+	keypress()
+	keydown()
+	keyup()
+	*/
+	$(function(){
+		$('#id').keyup(function(){
+			var id = $(this).val();
+			if(id.length>=4 & id.length<=8){
+				$.ajax({
+					type:'post',
+					url:'idExist.do',
+					data:'id='+id,
+					
+					success:function(data){
+						//이미 사용중인 아이디... idcheck영역에 출력
+						//사용 가능 아이디... idcheck영역에 출력 
+						var jsonData = JSON.parse(data);
+						if(jsonData.check==true){
+							$('#idcheck').html('이미 사용중인 아이디!').css('color', 'red');
+							$('#submit_btn').attr('disabled', true); //비활성화 
+						}else{
+							$('#idcheck').html('사용 가능 아이디').css('color', 'green');
+							$('#submit_btn').attr('disabled', false); //비활성화 
+						}
+						
+					}
+				});
+			}else{
+				$('#idcheck').html('4자 이상, 8자 이하만 가능!!').css('color', 'orange');
+				$('#submit_btn').attr('disabled', true); //비활성화 
+			}
+		});
+	});
+</script>
 </head>
 <body>
 <div class="container">
@@ -32,6 +68,7 @@ form{
     <div class="form-group">
       <label for="id">ID:</label>
       <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">     
+      <span id="idcheck" style="margin-left:15px"></span>
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>

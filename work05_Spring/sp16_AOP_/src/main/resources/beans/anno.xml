@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!-- Target(2) member, product   , Advice(1) logging -->
+<bean id="member" class="spring.aop.anno.MemberService" />
+<bean id="product" class="spring.aop.anno.ProductService" />
+<bean id="logging" class="spring.aop.anno.LoggingAdvice" />
+
+
+<!-- annotation을 통해 aop:config 생략가능 -> 아래 태그를 통해 annotation 확인하라고 알려줌  -->
+<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+</beans>

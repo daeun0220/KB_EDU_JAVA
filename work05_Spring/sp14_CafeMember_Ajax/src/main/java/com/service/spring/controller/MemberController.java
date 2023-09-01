@@ -40,9 +40,9 @@ public class MemberController {
 	
 	@RequestMapping("showAll.do")
 	public String showAll(Model model) throws Exception {
+		//HttpServletRequest에 데이터 바인딩  | 페이지 이동은 forward가 기본을 작동한다
 		List<MemberVO> list = memberService.showAllMember();
 		model.addAttribute("list", list);
-		System.out.println(list);
 		return "allView";
 	}
 	
@@ -72,16 +72,35 @@ public class MemberController {
 	}
 	
 	@RequestMapping("update.do")
-	public String update(Model model, MemberVO vo) throws Exception {
-		memberDAO.updateMember(vo);
-		model.addAttribute("vo", vo);
-		return "update_result";
-	}
+    public String update(HttpSession session, MemberVO pvo) throws Exception{
+        memberDAO.updateMember(pvo);
+        //로그인된 상태에서만 수정 가능...
+
+        if(session.getAttribute("vo")!=null) {//로그인 상태라면
+          session.setAttribute("vo", pvo);  // 반드시 세션에 정보 저장 
+          return "update_result";
+        }
+        return null;
+    }
 	
 	@RequestMapping("logout.do")
-	public String logout(HttpSession Session) throws Exception {
-		Session.invalidate();
-		return "logout";
+    public String logout(HttpServletRequest request) throws Exception{
+        HttpSession session=request.getSession();
+        if(session.getAttribute("vo")!=null) { //로그인된 상태라면 로그아웃
+            session.invalidate();//세션을 죽이고
+            return "logout";
+        }
+        return null;
+    }
+	
+	@RequestMapping("idExist.do")
+	public String idExist(Model model, String id) throws Exception{
+		boolean check = false;
+		String rid = memberDAO.idExist(id);
+		if(rid!=null) check=true;
+		
+		model.addAttribute("check", check);
+		return "JsonView";
 	}
 	
 	

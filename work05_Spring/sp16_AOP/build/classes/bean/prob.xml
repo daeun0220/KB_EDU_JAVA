@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<bean id="member" class="spring.aop.solv.MemberService"></bean>
+<bean id="member" class="spring.aop.solv.ProductService"></bean>
+<bean id="member" class="spring.aop.solv.LogginAdivce"></bean>
+
+<aop:config>
+	<aop:aspect id="logginAspect" ref="logging">
+		<aop:pointcut expression="execution(* spring.aop..*(..))" id="pc"/>
+	</aop:aspect>
+</aop:config>
+</beans>
